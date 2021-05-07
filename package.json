@@ -152,6 +152,6 @@
     "typescript": "^4.2.2"
   },
   "dependencies": {
-    "@popperjs/core": "https://github.com/popperjs/popper-core/tarball/fix/376"
+    "@popperjs/core": "https://github.com/rmanalan/popper-core/tarball/fix/376"
   }
 }
