@@ -144,7 +144,7 @@
         element = _normalizeToArray[0]; // Elements created via a <template> have an ownerDocument with no reference to the body
 
 
-    return (element == null ? void 0 : (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body) ? element.ownerDocument : document;
+    return element != null && (_element$ownerDocumen = element.ownerDocument) != null && _element$ownerDocumen.body ? element.ownerDocument : document;
   }
   function isCursorOutsideInteractiveBorder(popperTreeData, event) {
     var clientX = event.clientX,
@@ -189,13 +189,13 @@
     var target = child;
 
     while (target) {
-      var _ref2;
+      var _target$getRootNode;
 
       if (parent.contains(target)) {
         return true;
       }
 
-      target = (_ref2 = target.getRootNode == null ? void 0 : target.getRootNode()) == null ? void 0 : _ref2.host;
+      target = target.getRootNode == null ? void 0 : (_target$getRootNode = target.getRootNode()) == null ? void 0 : _target$getRootNode.host;
     }
 
     return false;
@@ -376,7 +376,7 @@
     touch: true,
     trigger: 'mouseenter focus',
     triggerTarget: null
-  }, pluginProps, {}, renderProps);
+  }, pluginProps, renderProps);
   var defaultKeys = Object.keys(defaultProps);
   var setDefaultProps = function setDefaultProps(partialProps) {
     /* istanbul ignore else */
@@ -401,7 +401,7 @@
 
       return acc;
     }, {});
-    return Object.assign({}, passedProps, {}, pluginProps);
+    return Object.assign({}, passedProps, pluginProps);
   }
   function getDataAttributeProps(reference, plugins) {
     var propKeys = plugins ? Object.keys(getExtendedPassedProps(Object.assign({}, defaultProps, {
@@ -432,7 +432,7 @@
     var out = Object.assign({}, props, {
       content: invokeWithArgsOrReturn(props.content, [reference])
     }, props.ignoreAttributes ? {} : getDataAttributeProps(reference, props.plugins));
-    out.aria = Object.assign({}, defaultProps.aria, {}, out.aria);
+    out.aria = Object.assign({}, defaultProps.aria, out.aria);
     out.aria = {
       expanded: out.aria.expanded === 'auto' ? props.interactive : out.aria.expanded,
       content: out.aria.content === 'auto' ? props.interactive ? null : 'describedby' : out.aria.content
@@ -593,7 +593,7 @@
 
   var mountedInstances = [];
   function createTippy(reference, passedProps) {
-    var props = evaluateProps(reference, Object.assign({}, defaultProps, {}, getExtendedPassedProps(removeUndefinedProps(passedProps)))); // ===========================================================================
+    var props = evaluateProps(reference, Object.assign({}, defaultProps, getExtendedPassedProps(removeUndefinedProps(passedProps)))); // ===========================================================================
     // 🔒 Private members
     // ===========================================================================
 
@@ -716,7 +716,7 @@
       var _instance$props$rende;
 
       // @ts-ignore
-      return !!((_instance$props$rende = instance.props.render) == null ? void 0 : _instance$props$rende.$$tippy);
+      return !!((_instance$props$rende = instance.props.render) != null && _instance$props$rende.$$tippy);
     }
 
     function getCurrentTarget() {
@@ -755,7 +755,7 @@
 
       pluginsHooks.forEach(function (pluginHooks) {
         if (pluginHooks[hook]) {
-          pluginHooks[hook].apply(void 0, args);
+          pluginHooks[hook].apply(pluginHooks, args);
         }
       });
 
@@ -1303,7 +1303,7 @@
       invokeHook('onBeforeUpdate', [instance, partialProps]);
       removeListeners();
       var prevProps = instance.props;
-      var nextProps = evaluateProps(reference, Object.assign({}, instance.props, {}, partialProps, {
+      var nextProps = evaluateProps(reference, Object.assign({}, instance.props, partialProps, {
         ignoreAttributes: true
       }));
       instance.props = nextProps;
@@ -2007,7 +2007,7 @@
       var _instance$props$rende;
 
       // @ts-ignore
-      if (!((_instance$props$rende = instance.props.render) == null ? void 0 : _instance$props$rende.$$tippy)) {
+      if (!((_instance$props$rende = instance.props.render) != null && _instance$props$rende.$$tippy)) {
         {
           errorWhen(instance.props.animateFill, 'The `animateFill` plugin requires the default render function.');
         }
